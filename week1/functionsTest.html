@@ -37,6 +37,13 @@
             funArray.push( (noReturn() !== 1).toString() );
             funArray.push( (noReturn2() !== 1).toString() );
             funArray.push( (noReturn3() === 1).toString() );
+            
+            const myfun = fun1;
+            const funs = [null, undefined, fun1, fun2];
+            
+            funArray.push( (myfun() === 1).toString() );
+            funArray.push( (funs[2]() === 1).toString() );
+            
 
             funArray.forEach((e, i) => {
                 document.writeln(i + ": ");
