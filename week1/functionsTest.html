@@ -25,7 +25,24 @@
             function fun2() { return 1; }
             function fun2(arg) { return arg; }
 
-            document.writeln( (fun2() === 1).toString() );
+            funArray.push( (fun2() !== 1).toString() );
+            funArray.push( (fun2() === undefined).toString() );
+            funArray.push( (fun2(42) === 42).toString() );
+            funArray.push( (fun2() === 1).toString() )
+
+            function noReturn() { 1; }
+            const noReturn2 = () => { 1; }
+            const noReturn3 = () => 1;
+            
+            funArray.push( (noReturn() !== 1).toString() );
+            funArray.push( (noReturn2() !== 1).toString() );
+            funArray.push( (noReturn3() === 1).toString() );
+
+            funArray.forEach((e, i) => {
+                document.writeln(i + ": ");
+                document.writeln(e + '<br/>');
+            });
+
         </script>
     </body>
 </html>
