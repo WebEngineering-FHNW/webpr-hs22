@@ -7,16 +7,31 @@
 <body>
     <script>
 
-        let x = 0;
-        // (() => {
-            let x = 1;
-            document.writeln(x);
-        // })();
-        document.writeln(x);
+        const test = result => document.writeln(String(result));
 
-        // document.writeln( id(id) === id);
-        // document.writeln( Konst(id)(undefined) === id);
-        // document.writeln( Kite(undefined)(id) === id);
+        // let x = 0;
+        //
+        // (() => {
+        //     let x = 1;
+        //     document.writeln(String(x));
+        // })();
+        //
+        // document.writeln(String(x));
+
+        // const id = x => x; // alpha translation
+        const id    = y => y;
+        const konst = x => y => x;
+
+        // const kite  = x => y => y;               // erweitern um id
+        // const kite  = x => y => id(y);           // eta
+        // const kite  = x =>      konst(id)(x);    // erweitern um konst
+        // const kite  = x =>      konst(id)(x);    // eta
+        const kite  =           konst(id);          // erweitern um konst
+
+        test( id(id)                  === id);
+        test( konst(id)(undefined)    === id);
+        test( konst(konst)(undefined) === konst);
+        test( kite(undefined)(id)     === id);
 
     </script>
 </body>
