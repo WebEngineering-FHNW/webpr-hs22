@@ -1,5 +1,10 @@
 
+const id    = x => x;
+const konst = x => y => x;
+const snd   = x => y => y;
 
+const T =  konst;
+const F =  snd;
 
 // ----- special -----
 
