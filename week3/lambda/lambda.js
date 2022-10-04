@@ -6,6 +6,9 @@ const snd   = x => y => y;
 const T =  konst;
 const F =  snd;
 
+const and = x => y => x (y) (x);
+
+
 // ----- special -----
 
 const Tuple = n => [
