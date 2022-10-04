@@ -2,12 +2,21 @@
 const id    = x => x;
 const konst = x => y => x;
 const snd   = x => y => y;
+const fst   = konst;
 
 const T =  konst;
 const F =  snd;
 
 const and = x => y => x (y) (x);
+const or  = x => y => x (x) (y);
 
+const Pair = fn => ln => selector  => selector(fn)(ln);
+// const firstname = fst;
+// const lastname  = snd;
+
+const Left  = x => f => g => f(x);
+const Right = x => f => g => g(x);
+const either = e => handleLeft => handleRight => e (handleLeft)(handleRight);
 
 // ----- special -----
 
