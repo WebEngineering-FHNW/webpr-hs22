@@ -1,6 +1,6 @@
 // requires lambda.js
 
-let lambdaOk = [];
+const lambdaOk = [];
 
 lambdaOk.push(id(id) === id );
 

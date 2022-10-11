@@ -12,13 +12,13 @@ let direction = north;
 const clockwise = [north, east, south, west, north];
 const countercw = [north, west, south, east, north];
 
-let snake = [
+const snake = [
     Pair(10)(5),
     Pair(10)(6),
     Pair(10)(7),
     Pair(10)(8),
 ];
-let food = Pair(15)(15);
+let food    = Pair(15)(15);
 
 // function snakeEquals(a, b) { return a.x === b.x && a.y === b.y }
 const pairEq = a => b =>  undefined; // todo: your code here

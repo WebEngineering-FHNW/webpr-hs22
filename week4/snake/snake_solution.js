@@ -12,7 +12,7 @@ let direction = north;
 const clockwise = [north, east, south, west, north];
 const countercw = [north, west, south, east, north];
 
-let snake = [
+const snake = [
     Pair(10)(5),
     Pair(10)(6),
     Pair(10)(7),
@@ -27,7 +27,7 @@ const pairEq = a => b => a(fst) === b(fst) && a(snd) === b(snd);
 const pairPlus = a => b =>  Pair (a(fst) + b(fst)) (a(snd) + b(snd));
 
 // Function and Pair = Pair  // Functor
-const pairMap = f => pair =>  Pair (f(pair(fst))) (f(pair(snd)))
+const pairMap = f => pair =>  Pair (f(pair(fst))) (f(pair(snd)));
 
 function changeDirection(orientation) {
     const idx = orientation.indexOf(direction);
