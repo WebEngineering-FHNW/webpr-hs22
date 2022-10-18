@@ -12,9 +12,9 @@
             "lambda",
             "snake",
         ];
-        testSuite.forEach(foo => {
-            document.writeln("<script src=\""+foo+"/"+foo+".js\"></"+"script>");
-            document.writeln("<script src=\""+foo+"/"+foo+"Test.js\"></"+"script>");
+        testSuite.forEach(name => {
+            document.writeln("<script src=\""+name+"/"+name+".js\"></"+"script>");
+            document.writeln("<script src=\""+name+"/"+name+"Test.js\"></"+"script>");
         });
     </script>
 
