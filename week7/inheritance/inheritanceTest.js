@@ -2,7 +2,7 @@
 // requires /util/test.js
 
 ( () => {
-    let ok = [];
+    const ok = [];
 
     class Person { // refactoring Martin Fowler: replace inheritance with delegation
         constructor(name) {
@@ -46,7 +46,7 @@
 
 
 ( () => {
-    let ok = [];
+    const ok = [];
 
     function Person(worker) {
         const worklog  = [];
@@ -78,7 +78,7 @@
 
 // todo: can you make the dk object an instanceof Person?
 ( () => {
-    let ok = [];
+    const ok = [];
 
     function Person(worker) {
         const worklog  = [];
@@ -87,7 +87,7 @@
             work:    () => worklog.push(worker.work())
         };
 
-        // todo: ...
+        Object.setPrototypeOf(result, Person.prototype);
 
         return result
     }
