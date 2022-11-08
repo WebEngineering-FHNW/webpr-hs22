@@ -21,7 +21,7 @@
  */
 
 /**
- * @param { String } name
+ * @param { "Dierk" | "Florian" } name
  * @return { PlayerType }
  * @constructor
  * @example
@@ -79,4 +79,4 @@ function display() {
     progressField.setAttribute("CLASS", "field progress");
 }
 
-player = Player("One");
+player = Player("Dierk");
