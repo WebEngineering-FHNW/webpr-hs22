@@ -4,6 +4,7 @@
     const ok = [];
 
     ok.push(id(id) === id);
+    ok.push(id("x")  === "x");
     ok.push(id(1)  === 1);
 
     ok.push(konst(42)(0)    === 42);

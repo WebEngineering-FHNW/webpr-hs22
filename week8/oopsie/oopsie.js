@@ -10,7 +10,23 @@
 //   turn()          // cash in your win, update fallback position for next turn
 // 
 
+/**
+ * @typedef  PlayerType
+ * @property { () => Number } getFallbackIndex - place to fall back on oopsie
+ * @property { () => Number } getProgressIndex - place having been proceeding to
+ * @property { () => String } getName
+ * @property { (stride:!Number) => void } proceed - proceed so many places
+ * @property { () => void } turn            - cash in your win, update fallback position for next turn
+ * @property { () => void } fallback        - "oopsie": go back to last start (fallback position)
+ */
 
+/**
+ * @param { String } name
+ * @return { PlayerType }
+ * @constructor
+ * @example
+ * Player("one");
+ */
 const Player = name => {  // name must be either "Dierk" or "Florian"
     let fallbackIndex = 0;
     let progressIndex = 0;
