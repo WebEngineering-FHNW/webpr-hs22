@@ -3,7 +3,7 @@
 const TodoController = () => {
 
     const Todo = () => {
-        const textAttr = Observable("text");           // we current don't expose it as we don't use it elsewhere
+        const textAttr = Observable("text");           // we currently don't expose it as we don't use it elsewhere
         const doneAttr = Observable(false);
         return {
             getDone: ()   => doneAttr.getValue(),       // veneer method

@@ -13,7 +13,7 @@ const addTodo = () => {
 
     const inputElement = document.createElement('INPUT');
     inputElement.setAttribute("TYPE","TEXT");
-    inputElement.setAttribute("SIZE","42");
+    inputElement.setAttribute("SIZE","36");
 
     const checkboxElement = document.createElement('INPUT');
     checkboxElement.setAttribute("TYPE", "CHECKBOX");
