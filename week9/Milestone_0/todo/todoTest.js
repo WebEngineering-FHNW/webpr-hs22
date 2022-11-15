@@ -4,10 +4,10 @@
 test("todo-crud", assert => {
 
     // setup
-    todoContainer = document.createElement("div");
-    numberOfTasks = document.createElement("span");
+    const todoContainer = document.createElement("div");
+    const numberOfTasks = document.createElement("span");
     numberOfTasks.textContent = '0';
-    openTasks = document.createElement("span");
+    const openTasks = document.createElement("span");
     openTasks.textContent = '0';
 
     startTodo(todoContainer, numberOfTasks, openTasks);
