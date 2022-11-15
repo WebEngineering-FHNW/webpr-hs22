@@ -2,6 +2,16 @@
 
 // todo: jsdoc
 
+/**
+ * @typedef AssertType
+ * @template _T_
+ * @property { () => Array<Boolean> } getOk - the assertion results
+ * @property { (actual:_T_, expected:_T_ ) => void } equals - test on identity
+ */
+/**
+ * @return { AssertType }
+ * @constructor
+ */
 const Assert = () => {
     const ok = [];
 
@@ -18,8 +28,13 @@ const Assert = () => {
     }
 };
 
+/**
+ * @private
+ */
 const bar = extend => document.writeln("+" + "-".repeat(extend) + "+");
-
+/**
+ * @private
+ */
 const fill = (str, extend) => {
     const len = str.toString().length; // in case str is not a string
     if (len > extend) {
@@ -27,11 +42,17 @@ const fill = (str, extend) => {
     }
     return " ".repeat(extend - len);
 };
-
+/**
+ * @private
+ */
 const padLeft = (str, extend) => "" + fill(str, extend) + str; // todo: use new stdlib function
-
+/**
+ * @private
+ */
 const padRight = (str, extend) => "" + str + fill(str, extend);
-
+/**
+ * @private
+ */
 const report = (origin, ok) => {
     const extend = 20;
     if ( ok.every( elem => elem) ) {
@@ -49,7 +70,19 @@ const report = (origin, ok) => {
     bar(reportLine.length);
 };
 
+/**
+ * @callback TestCallback
+ * @param { AssertType } assert - what to execute as a test
+ * @return void
+ */
 
+/**
+ * @param { String } origin - what the test is about
+ * @param { TestCallback } callback
+ * @return void
+ * @example
+ * test("my test", assert => { assert.equals(true, true); } );
+ */
 const test = (origin, callback) => {
     const assert = Assert();          //    das ok anlegen
     callback(assert);                 //    das ok befüllen
