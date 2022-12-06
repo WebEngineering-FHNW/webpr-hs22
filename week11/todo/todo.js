@@ -3,7 +3,7 @@
 const TodoController = () => {
 
     const Todo = () => {                                // facade
-        const textAttr = Observable("...");            // we current don't expose it as we don't use it elsewhere
+        const textAttr = Observable("...");            // we currently don't expose it as we don't use it elsewhere
         const doneAttr = Observable(false);
         return {
             getDone:       doneAttr.getValue,
@@ -22,20 +22,21 @@ const TodoController = () => {
         todoModel.add(newTodo);
         return newTodo;
     };
-//    const scheduler = Scheduler();
+
+    const scheduler = Scheduler();
     const addFortuneTodo = button => {
-//        button.disabled = true;
+        button.disabled = true;
         const newTodo = Todo();
         todoModel.add(newTodo);
         newTodo.setText("...");
 
-//        scheduler.add( ok => {
+        scheduler.add( ok => {
             fortuneService( text => {
                 newTodo.setText(text);
-//                button.disabled = false;
-                ok();
+               button.disabled = false;
+               ok();
             });
-//        });
+       });
 
 
         return newTodo;

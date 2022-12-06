@@ -1,28 +1,28 @@
 
 // execute asynchronous tasks in strict sequence, aka "reactive stream", "flux architecture"
 const Scheduler = () => {
-    let inProcess = false;
+    let   inProcess = false;
     const tasks = [];
-    function process() {
+
+    const process = () => {
         if (inProcess) { return; }
-        if (tasks.length === 0) { return; } // guard clause
+        if (tasks.length < 1 ) { return; }
         inProcess = true;
         const task = tasks.pop();
-
         new Promise( (resolve, reject) => {
             task(resolve);
         }). then ( () => {
             inProcess = false;
             process();
         });
-    }
-    function add(task) {
+    } ;
+
+    const add = task => {
         tasks.unshift(task);
         process();
-    }
-    return {
-        add: add,
-        addOk: task => add( ok => { task(); ok(); }) // convenience
+    };
+    return { add,
+        addOk : task => add( ok => { task(); ok() } )
     }
 };
 
