@@ -13,7 +13,7 @@
     <div class="holder">
         <button id="plus" autofocus onclick="todoController.addTodo();"> + </button>
 
-        <div class="table" id="todoContainer"></div>
+<!--        <div class="table" id="todoContainer"></div>-->
 
         <div>Tasks: <span id="numberOfTasks">0</span></div>
         <div>Open:  <span id="openTasks"    >0</span></div>
@@ -26,7 +26,7 @@
 <script>
     const todoController = TodoController();
 
-    TodoItemsView(todoController, document.getElementById('todoContainer'));
+    // TodoItemsView(todoController, document.getElementById('todoContainer'));
     TodoTotalView(todoController, document.getElementById('numberOfTasks'));
     TodoOpenView (todoController, document.getElementById('openTasks'));
 
