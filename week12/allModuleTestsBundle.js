@@ -61,7 +61,7 @@ function report(origin, ok) {
         write(" "+ padLeft(ok.length, 3) +" tests in " + padRight(origin, extend) + " ok.");
         return;
     }
-    let reportLine = "    Failing tests in " + padRight(origin, extend);
+    const reportLine = "    Failing tests in " + padRight(origin, extend);
     bar(reportLine.length);
     write("|" + reportLine+ "|");
     for (let i = 0; i < ok.length; i++) {
@@ -74,7 +74,7 @@ function report(origin, ok) {
 
 function write(message) {
     const out = document.getElementById('out');
-    out.innerText += message + "\n";
+    out.textContent += message + "\n";
 }
 
 function bar(extend) {
@@ -131,58 +131,44 @@ modSuite.add("singleton", assert => {
 
 modSuite.run();
 
-/**
- * @module Person (just an immutable product type)
- */
+// https://stackoverflow.com/questions/10993824/do-something-n-times-declarative-syntax
 
-// ctor
+const timesFunction = function(callback) {
+  if( isNaN(parseInt(Number(this.valueOf()))) ) {
+    throw new TypeError("Object is not a valid number");
+  }
+  for (let i = 0; i < Number(this.valueOf()); i++) {
+    callback(i);
+  }
+};
 
-const Person =
-    firstname =>
-    lastname  =>
-    Object.seal( selector  => selector (firstname) (lastname) );
+String.prototype.times = timesFunction;
+Number.prototype.times = timesFunction;
 
+const util = Suite("util");
 
-// getters
+// extending the prototype of many objects
+util.test("times-num", assert => {
 
-const firstname = firstname => _ => firstname;
-const lastname  = _ => lastname  => lastname;
-const setLastname  = person => ln => Person (person(lastname)) (ln);
+    const collect = [];
 
-// module "methods"
+    (10).times( n => collect.push(n) );
 
-const toString = person => 'Person ' + person(firstname) + " " +  person(lastname);
+    assert.is(collect.length, 10);
+    assert.is(collect[0], 0);
+    assert.is(collect[9], 9);
 
-const equals   = p1 => p2 =>
-    p1(firstname) === p2(firstname) &&
-    p1(lastname)  === p2(lastname);
-
-const toObj = person => ({
-   firstname: person(firstname),
-   lastname:  person(lastname)
 });
 
-const toPerson = personObj => Person (personObj.firstname) (personObj.lastname);
+util.test("times-str", assert => {
 
-// todo: the line below should be uncommented
+    const collect = [];
 
-const person = Suite("person");
+    '10'.times( n => collect.push(n) );
 
-person.test("use", assert => {
-
-    const dierk = Person ("Dierk") ('König');
-
-    assert.is(dierk(firstname), "Dierk");
-
-    const gently = setLastname(dierk)("Gently");
-
-    assert.is( gently(lastname), "Gently");
-
-    assert.true(   equals (dierk) (dierk)  );
-    assert.true( ! equals (dierk) (gently) );
-
-    assert.true( equals (dierk) (toPerson(toObj(dierk))) );
-    assert.is( toString(dierk), 'Person Dierk König');
+    assert.is(collect.length, 10);
+    assert.is(collect[0], 0);
+    assert.is(collect[9], 9);
 
 });
 

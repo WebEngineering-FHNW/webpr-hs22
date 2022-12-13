@@ -45,7 +45,7 @@ function report(origin, ok) {
         write(" "+ padLeft(ok.length, 3) +" tests in " + padRight(origin, extend) + " ok.");
         return;
     }
-    let reportLine = "    Failing tests in " + padRight(origin, extend);
+    const reportLine = "    Failing tests in " + padRight(origin, extend);
     bar(reportLine.length);
     write("|" + reportLine+ "|");
     for (let i = 0; i < ok.length; i++) {
@@ -58,7 +58,7 @@ function report(origin, ok) {
 
 function write(message) {
     const out = document.getElementById('out');
-    out.innerText += message + "\n";
+    out.textContent += message + "\n";
 }
 
 function bar(extend) {
